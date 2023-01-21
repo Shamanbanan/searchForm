@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+
     var itemsArray = [
       "AIR DESIGN / Палочки для диффузора 100 мл., 25см., 8шт. / STICKS FOR DIFFUSER 100ml",
       "Aйфон 5",
@@ -12842,6 +12842,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       // Return the last value in the matrix
       return matrix[a.length][b.length];
-    }
-  });
+    };
   
