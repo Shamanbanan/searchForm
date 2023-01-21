@@ -1,0 +1,92 @@
+body {
+  font-family: sans-serif;
+}
+fieldset {
+  border-radius: 8px;
+  border: 1px solid gray;
+}
+#sorted-list {
+  padding-left: 20px;
+  margin: 0px;
+}
+li {
+  padding: 5px 10px 5px 0px;
+  border-bottom: 0.5px solid lightgray;
+  /*   display: grid;
+  justify-content: space-between; */
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.grid-item {
+  padding: 5px 5px 5px 0px;
+}
+.remove-btn {
+  float: right;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+  color: gray;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  border-radius: 50%;
+}
+
+.remove-btn:before {
+  content: "X";
+  font-size: 14px;
+  line-height: 8x;
+}
+.remove-btn:hover {
+  color: tomato;
+}
+.fieldset-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "inputName inputName"
+    "submitButton exportButton";
+  gap: 10px;
+}
+#input-field {
+  grid-area: inputName;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  font-size: 14px;
+}
+#input-field:hover {
+  border: 1px solid #5294ff;
+}
+#submit {
+  grid-area: submitButton;
+}
+
+#export-btn {
+  grid-area: exportButton;
+}
+.btn {
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: all 0.5s;
+}
+.btn:hover {
+  cursor: pointer;
+  background: #5294ff;
+  color: white;
+}
