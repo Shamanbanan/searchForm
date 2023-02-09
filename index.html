@@ -5,31 +5,91 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    
-    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+    <title>Заявка номенклатуры</title>
 </head>
 <body>
-    <div class="container">
-        <div class="grid">
-          <div class="grid-item list">
-            <fieldset>
-              <legend>Список</legend>
-              <ol id="sorted-list"></ol>
-            </fieldset>
-          </div>
-          <div class="grid-item" id="form">
-      
-            <form>
-              <fieldset class="fieldset-form">
-                <legend>Форма поиска</legend>
-                <input type="text" list="item-list" id="input-field" placeholder="Поиск номенклатуры">
-                <datalist id="item-list"></datalist>
-                <button type="submit" id="submit-btn" class="btn">Добавить</button>
-                <button type="button" id="export-btn" class="btn">Скачать</button></dataset>
-            </form>
-          </div>
+  <input type="text" id="user-id" value="" disabled>
+  <input type="text" id="user-search" placeholder="Поиск по списку">
+  <svg class="searchUsers" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+ 
+  <div class="container">
+    <div class="left-side">
+      <fieldset class="list-fieldset">
+        <legend>Список номенклатур</legend>
+        <ol id="list">
+          <li class="header-item">
+            <span>Дата</span>
+            <span>Категория ТМЦ</span>
+            <span>Наименование</span>
+            <span>Вариант исполнения</span>
+            <span>Баз ед</span>
+            <span>Оборудование</span>
+            <span>Статья</span>
+            <span>ФИО</span>
+            <span>Код</span>
+            <span>Комментарий</span>
+            <span></span>
+            <span></span>
+          </li>
+        </ol>
+      </fieldset>
+    </div>
+
+    <div class="right-side">
+      <form id="form" action="#" method="post">
+        <fieldset class="category-fieldset">
+          <legend>Категория</legend>
+          <div class="categiry-content"><input type="radio" id="category-1" name="category" value="Основные материалы" required>
+            <label for="category-1">Основные материалы</label></div>
+          <div class="categiry-content"><input type="radio" id="category-2" name="category" value="Вспомогательные материалы" required>
+            <label for="category-2">Вспомогательные материалы</label></div>
+          <div class="categiry-content"><input type="radio" id="category-3" name="category" value="Запасные части" required>
+            <label for="category-3">Запасные части</label></div>
+            <div class="categiry-content"><input type="radio" id="category-4" name="category" value="Инвентарь" required>
+              <label for="category-4">Инвентарь</label></div>
+              <div class="categiry-content"><input type="radio" id="category-5" name="category" value="Хозматериалы" required>
+                <label for="category-5">Хозматериалы</label></div>
+                <div class="categiry-content"><input type="radio" id="category-6" name="category" value="Инструмент" required>
+                  <label for="category-6">Инструмент</label></div>
+                  <div class="categiry-content"><input type="radio" id="category-7" name="category" value="Стройматериал" required>
+                    <label for="category-7">Стройматериал</label></div>
+          <!-- Категории radio buttons -->
+        </fieldset>
+        <fieldset class="form-fieldset">
+          <legend>Форма заявки</legend>
+          <div class="container-form">
+          <input type="text" id="name" list="name-list" autocomplete="off" placeholder="Введите наименование" required>
+          <datalist id="name-list"></datalist>
+          <input type="text" id="variation" autocomplete="off" placeholder="Введите вариант исполнения" required>
+          <!-- Оборудование -->
+          <input type="text" id="equipment" list="equipment-list" placeholder="Оборудование" autocomplete="off" disabled required >
+          <datalist id="equipment-list" autocomplete="off"></datalist>
+          <!-- Статья -->
+          <input type="text" id="article" list="article-list" placeholder="Комментарий">
+          <datalist id="article-list" autocomplete="on"></datalist>
+          <!-- Баз.ед select -->
+          <select id="type">
+            <option value="Метр">Метр</option>
+            <option value="Штука" selected>Штука</option>
+            <option value="Рулон">Рулон</option>
+            <option value="Упаковка">Упаковка</option>
+            <option value="Лист">Лист</option>
+            <option value="Погонный метр">Погонный метр</option>
+          </select>
+          <input type="number" id="input-code" disabled>
         </div>
-      </div>
+        <div class="container-buttons">
+          <button type="submit">Отправить</button>
+          <button type="reset">Очистить</button>
+          <button id="download-btn">Скачать</button>
+        </div>
+        </fieldset>
+        
+      </form>
+  </div>
+</div>
     <script src="main.js"></script>
 </body>
 </html>
